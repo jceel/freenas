@@ -745,6 +745,7 @@ def get_terminal_size():
 
 def sigint_handler(sig, frame):
     print('Aborting...')
+    os._exit(1)
 
 def print_progress(message, done, percentage):
     global progress_muted
@@ -826,10 +827,12 @@ def main(argv):
 
     if args.r and args.i:
         # Launch restore in interactive mode
+        signal.signal(signal.SIGINT, sigint_handler)
         return restore(argv)
 
     if args.i:
         # Launch backup in interactive mode
+        signal.signal(signal.SIGINT, sigint_handler)
         return backup(argv)
 
     pidfile = PidFile('/var/run/backupd.pid')
