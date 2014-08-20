@@ -1528,4 +1528,9 @@ class BackupForm(Form):
         required=True)
 
     backup_data = forms.BooleanField(
-        label=_("Backup data"))
+        label=_("Backup data"),
+        required=False)
+
+    backup_compression = forms.BooleanField(
+        label=_("Compress backup"),
+        required=False)
