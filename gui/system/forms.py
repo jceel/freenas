@@ -1521,7 +1521,7 @@ class BackupForm(Form):
 
     backup_password = forms.CharField(
         label=_("Password"),
-        required=True)
+        required=False)
 
     backup_directory = forms.CharField(
         label=_("Remote directory"),
@@ -1533,4 +1533,8 @@ class BackupForm(Form):
 
     backup_compression = forms.BooleanField(
         label=_("Compress backup"),
+        required=False)
+
+    backup_auth_keys = forms.BooleanField(
+        label=_("Use key authentication"),
         required=False)
